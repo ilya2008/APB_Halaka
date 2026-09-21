@@ -1,18 +1,42 @@
 #include <iostream>
+#include <iomanip>
+#include <string>
+#include <windows.h>
 
-// TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 
+using namespace std;
 int main() {
-    // TIP Press <shortcut actionId="RenameElement"/> when your caret is at the <b>lang</b> variable name to see how CLion can help you rename it.
+    SetConsoleCP(CP_UTF8);
+    SetConsoleOutputCP(CP_UTF8);
+     int year1, year2, year3;
+     string name1, name2, name3;
+     int diam1, diam2, diam3;
+     int freq1, freq2, freq3;
+     cout << "1. Введіть: рік, керівника, діаметр антени, робочу частоту > ";
+     cin >> year1 >> name1 >> diam1 >> freq1;
+     cout << "2. Введіть: рік, керівника, діаметр антени, робочу частоту > ";
+     cin >> year2 >> name2 >> diam2 >> freq2;
+     cout << "3. Введіть: рік, керівника, діаметр антени, робочу частоту > ";
+     cin >> year3 >> name3 >> diam3 >> freq3;
 
-    const auto lang = "C++";
-    std::cout << "Hello and welcome to " << lang << "!\n";
+     cout << "----------------------------------------------------------------------------\n";
+     cout << "| Проекти пошуку позаземних сигналів                                       |\n";
+     cout << "|--------------------------------------------------------------------------|\n";
+     cout << "| Рік  | Науковий керівник | Діаметр антени (м) | Робоча частота (МГц)     |\n";
+     cout << "|------|--------------------|--------------------|-------------------------|\n";
 
-    for (int i = 1; i <= 5; i++) {
-        // TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-        std::cout << "i = " << i << std::endl;
-    }
+     cout << "|" << setw(6) << year1 << "|" << setw(20) << name1
+         << "|" << setw(20) << diam1 << "|" << setw(26) << freq1 << "  |" << endl;
+
+     cout << "|" << setw(6) << year2 << "|" << setw(20) << name2
+         << "|" << setw(20) << diam2 << "|" << setw(26) << freq2 << "  |" << endl;
+
+     cout << "|" << setw(6) << year3 << "|" << setw(20) << name3
+         << "|" << setw(20) << diam3 << "|" << setw(26) << freq3 << "  |" << endl;
+
+     cout << "|--------------------------------------------------------------------------|\n";
+     cout << "| Примітка: спостерігалися об'єкти від 2 зірок до кількох галактик         |\n";
+     cout << "----------------------------------------------------------------------------\n";
 
     return 0;
-    // TIP See CLion help at <a href="https://www.jetbrains.com/help/clion/">jetbrains.com/help/clion/</a>. Also, you can try interactive lessons for CLion by selecting 'Help | Learn IDE Features' from the main menu.
 }
