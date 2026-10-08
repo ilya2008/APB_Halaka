@@ -1,40 +1,32 @@
 #include <iostream>
 #include <windows.h>
+#include <iomanip>
+#include <cmath>
 
 using namespace std;
 int main() {
     SetConsoleCP(CP_UTF8);
     SetConsoleOutputCP(CP_UTF8);
-    int choice;
-    cout << "1.	Введеня координат точок\n";
-    cout << "2.	Виведення на екран результату\n";
-    cout << "3.	Вихід з програми\n";
-    cout << "Ваш вибір:  ";
-    cin >> choice;
-    if (choice != 1) {
-        cout << "Спочатку введіть координат точок(1): ";
-        cin >> choice;
-    }
-    double x, y;
-    while (choice != 3) {
-        switch (choice) {
-            case 1:
-                // Беремо координати, які дав корстувач
-                cout << "Введіть x та y:  ";
-                cin >> x >> y;
-                break;
-            case 2:
-                // Виводимо результат не екран
-                if (x * x + y * y <= 1 && (x <= 0 || y >= 0)) {
+    long n = 0;
+    double term;
+    double sum = 0;
+    const double eps = 0.000001;
 
-                    cout << "Точка попадає в область\n";
-                }
-                else {
-                    cout << "Точка не попадає в область\n";
-                }
-                break;
+    long k2 = 1;
+    short k1 = 1;
+    while (true) {
+        term = k1 * (1 - (double)k2 / (k2 + 1));
+        if (abs(term) <= eps) {
+            break;
         }
-        cout << "Ваш вибір: ";
-        cin >> choice;
+            sum += term;
+            if (n == 9) {
+                cout << "Сума 10 членів ряду = " << fixed << setprecision(7) << sum << endl;
+            }
+            k1 = -k1;
+            k2 = k2 * 2;
+            n += 1;
+        }
+    cout << "Повна сума ряду = " << fixed << setprecision(7) << sum << endl;
+    return 0;
     }
-}
