@@ -1,40 +1,49 @@
 #include <iostream>
+#include <cstdlib>
 #include <windows.h>
 
 using namespace std;
 int main() {
     SetConsoleCP(CP_UTF8);
     SetConsoleOutputCP(CP_UTF8);
-    int choice;
-    cout << "1.	Введеня координат точок\n";
-    cout << "2.	Виведення на екран результату\n";
-    cout << "3.	Вихід з програми\n";
-    cout << "Ваш вибір:  ";
-    cin >> choice;
-    if (choice != 1) {
-        cout << "Спочатку введіть координат точок(1): ";
-        cin >> choice;
+    //Масив
+    int arr[100];
+    // Рандомайзер
+    srand(3);
+    // Заповнюємо масив випадковими числами
+    for (int i = 0; i < 100; i++) {
+        arr[i] = rand() % 201 - 100;
     }
-    double x, y;
-    while (choice != 3) {
-        switch (choice) {
-            case 1:
-                // Беремо координати, які дав корстувач
-                cout << "Введіть x та y:  ";
-                cin >> x >> y;
-                break;
-            case 2:
-                // Виводимо результат не екран
-                if (x * x + y * y <= 1 && (x <= 0 || y >= 0)) {
-
-                    cout << "Точка попадає в область\n";
-                }
-                else {
-                    cout << "Точка не попадає в область\n";
-                }
-                break;
+    // Треба вивести початковий масив
+    cout << "Початковий масив:" << endl;
+    for (int i = 0; i < 100; i++) {
+        cout << arr[i] << " ";
+    }
+    cout << endl << endl;
+    // Послідовності невід'ємних чисел довжиною > 5
+    unsigned short count = 0;
+    unsigned short start = 0;
+    cout << "Початкові індекси послідовностей довжиною > 5" << endl;
+    // Аналізуємо сам масив
+    for (int i = 0; i < 100; i++) {
+        // Перевіряємо чи число додатне
+        if (arr[i] >= 0) {
+            if (count == 0) {
+                start = i;
+            }
+            count++;
         }
-        cout << "Ваш вибір: ";
-        cin >> choice;
+        // Якщо вже 5 чисел невід'ємні і зустріли від'ємне
+        else {
+            if (count > 5) {
+                cout << start << endl;
+            }
+            count = 0;
+        }
     }
+    // Якщо останні будуть невід'ємними
+    if (count > 5) {
+        cout << start << endl;
+    }
+    return 0;
 }
