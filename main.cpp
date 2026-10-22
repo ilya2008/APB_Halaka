@@ -6,44 +6,42 @@ using namespace std;
 int main() {
     SetConsoleCP(CP_UTF8);
     SetConsoleOutputCP(CP_UTF8);
-    //Масив
-    int arr[100];
-    // Рандомайзер
-    srand(3);
-    // Заповнюємо масив випадковими числами
-    for (int i = 0; i < 100; i++) {
-        arr[i] = rand() % 201 - 100;
-    }
-    // Треба вивести початковий масив
-    cout << "Початковий масив:" << endl;
-    for (int i = 0; i < 100; i++) {
-        cout << arr[i] << " ";
-    }
-    cout << endl << endl;
-    // Послідовності невід'ємних чисел довжиною > 5
-    unsigned short count = 0;
-    unsigned short start = 0;
-    cout << "Початкові індекси послідовностей довжиною > 5" << endl;
-    // Аналізуємо сам масив
-    for (int i = 0; i < 100; i++) {
-        // Перевіряємо чи число додатне
-        if (arr[i] >= 0) {
-            if (count == 0) {
-                start = i;
-            }
-            count++;
-        }
-        // Якщо вже 5 чисел невід'ємні і зустріли від'ємне
-        else {
-            if (count > 5) {
-                cout << start << endl;
-            }
-            count = 0;
+    srand(0);
+    unsigned short S = 9;
+    //Створюємо двохвимірний масив
+    int Ar[S][S];
+    //Заповнюємо його
+    for (int i = 0; i < 9; i++) {
+        for (int j = 0; j < 9; j++) {
+            Ar[i][j] = rand() % 100;
         }
     }
-    // Якщо останні будуть невід'ємними
-    if (count > 5) {
-        cout << start << endl;
+    //Виводимо початковий масив
+    cout << "Початкова матриця: " << endl;
+    for (int i = 0; i < 9; i++) {
+        for (int k = 0; k < 9; k++) {
+            cout << Ar[i][k] << "\t";
+        }
+        cout << endl;
+    }
+    //Рахуємо рядки і стовпчики
+    for (int i = 0; i < 9; i++) {
+        int sum = 0;
+        for (int k = 0; k < 9; k++) {
+            if (k != i) {
+                sum += Ar[i][k];
+                sum += Ar[k][i];
+            }
+        }
+        Ar[i][i] = sum;
+    }
+    //Виводимо оброблену матрицю
+    cout << "Оброблена матриця: " << endl;
+    for (int i = 0; i < 9; i++) {
+        for (int k = 0; k < 9; k++) {
+            cout << Ar[i][k] << "\t";
+        }
+        cout << endl;
     }
     return 0;
 }
